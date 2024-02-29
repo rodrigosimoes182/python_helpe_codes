@@ -1,0 +1,49 @@
+# This is a example code  of how to use list comprehesion
+# The scenario is: we have a employees raw data with  name, jod title and salary
+# The challenge is  to calculate the average salary for developer and non developers
+# There are different ways to solve this challenge, but the main purpose is using List comprehesions
+
+# Raw data
+employees = [{
+    'name': 'Jane',
+    'salary': 90000,
+    'job_title': 'developer'
+}, {
+    'name': 'Bill',
+    'salary': 50000,
+    'job_title': 'writer'
+}, {
+    'name': 'Kathy',
+    'salary': 120000,
+    'job_title': 'executive'
+}, {
+    'name': 'Anna',
+    'salary': 100000,
+    'job_title': 'developer'
+}, {
+    'name': 'Dennis',
+    'salary': 95000,
+    'job_title': 'developer'
+}, {
+    'name': 'Albert',
+    'salary': 70000,
+    'job_title': 'marketing specialist'
+}]
+# create a dev and non_dev function
+def is_dev(employee):
+    return employee['job_title'] == 'developer'
+def non_dev(employee):
+    return employee['job_title'] != 'developer'
+# create a dev and non dev list from the data
+developer_list = [x for x in employees if is_dev(x)]
+non_developer_list = [x for x in employees if non_dev(x)]
+# function to get salary form a list
+def get_salary(employee):
+    return employee['salary']
+#create a salary list to dev and non_dev roles
+developer_salary =[get_salary(x) for x in developer_list]
+non_dev_salary =[get_salary(x) for x in non_developer_list]
+# calculate the salary average for dev and non_dev roles
+dev_avg_salary = sum(developer_salary)/len(developer_salary)
+non_dev_avg_salary = sum(non_dev_salary)/len(non_dev_salary)
+print(dev_avg_salary,non_dev_avg_salary)
